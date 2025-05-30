@@ -46,3 +46,46 @@
   border-radius: 50%;
   filter: blur(2px);
 }
+
+.geometric-shape {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 10;
+}
+
+.geometric-shape::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid rgba(96, 165, 250, 0.6);
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.3));
+}
+
+.geometric-shape:nth-child(2n)::before {
+  border-bottom-color: rgba(168, 85, 247, 0.6);
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.3));
+}
+
+.geometric-shape:nth-child(3n)::before {
+  border-bottom-color: rgba(244, 114, 182, 0.6);
+  filter: drop-shadow(0 0 10px rgba(244, 114, 182, 0.3));
+}
+
+.geometric-shape:nth-child(4n)::before {
+  border-bottom-color: rgba(34, 197, 94, 0.6);
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.3));
+}
+
+.geometric-shape:nth-child(5n)::before {
+  border-bottom-color: rgba(251, 191, 36, 0.6);
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+}
+
+.geometric-shape:nth-child(6n)::before {
+  border-bottom-color: rgba(239, 68, 68, 0.6);
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.3));
+}

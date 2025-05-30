@@ -50,6 +50,56 @@ const ParticleSystem = () => {
   );
 };
 
+const GeometricShapes = () => {
+  const [shapes, setShapes] = useState<{ id: number; x: number; y: number; size: number; delay: number; rotation: number }[]>([]);
+
+  useEffect(() => {
+    const createShapes = () => {
+      const newShapes = Array.from({ length: 12 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 30 + 20,
+        delay: Math.random() * 4,
+        rotation: Math.random() * 360
+      }));
+      setShapes(newShapes);
+    };
+
+    createShapes();
+  }, []);
+
+  return (
+    <>
+      {shapes.map((shape) => (
+        <motion.div
+          key={shape.id}
+          className="geometric-shape"
+          style={{
+            left: `${shape.x}%`,
+            top: `${shape.y}%`,
+            width: `${shape.size}px`,
+            height: `${shape.size}px`,
+            transform: `rotate(${shape.rotation}deg)`,
+          }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{
+            opacity: [0, 0.8, 0.4, 0.8, 0],
+            scale: [0, 1.2, 0.8, 1.2, 0],
+            rotate: [shape.rotation, shape.rotation + 180, shape.rotation + 360],
+          }}
+          transition={{
+            duration: 10,
+            delay: shape.delay,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      ))}
+    </>
+  );
+};
+
 const FloatingText = () => {
   return (
     <div className="absolute right-8 top-1/4 z-40">
@@ -212,6 +262,7 @@ function App() {
           }}
         />
         <ParticleSystem />
+        <GeometricShapes />
       </div>
 
       {/* Hero Section */}
