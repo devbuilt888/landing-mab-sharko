@@ -105,10 +105,10 @@ const FloatingText = () => {
     <div className="absolute right-8 top-1/4 z-40">
       <div className="bg-black-30 backdrop-blur-sm p-4 rounded-xl border border-white-10 shadow-xl">
         <p className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-400">
-          10x más productivo
+          La habilidad #1
         </p>
         <p className="text-gray-300 text-xs mt-1">
-          con herramientas de IA
+          para aprender en 2025
         </p>
       </div>
     </div>
@@ -121,13 +121,13 @@ const LimitedSeatsBanner = () => {
       <div className="bg-black-30 backdrop-blur-sm p-4 rounded-xl border border-white-10 shadow-xl">
         <div className="flex items-center gap-2 mb-1">
           <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-          <span className="text-red-400 text-xs font-medium">Cupos Limitados</span>
+          <span className="text-red-400 text-xs font-medium">No te quedes atrás</span>
         </div>
         <p className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-orange-400">
-          Regístrate Ahora
+          Únete Ahora
         </p>
         <p className="text-gray-300 text-xs mt-1">
-          al webinar de IA
+          antes que sea tarde
         </p>
       </div>
     </div>
@@ -163,22 +163,22 @@ const RegistrationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
                 ¡Últimos Cupos Disponibles!
               </h3>
               <p className="text-gray-300">
-                No pierdas la oportunidad de transformar tu negocio con IA
+                No dejes que tu negocio se quede atrás en la revolución de la IA
               </p>
             </div>
 
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3 text-gray-300">
                 <SparklesIcon className="w-5 h-5 text-blue-400" />
-                <p>Aprende a crear contenido profesional con IA</p>
+                <p>Obtén GRATIS lo que Otros Pagan Miles</p>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <RocketLaunchIcon className="w-5 h-5 text-purple-400" />
-                <p>Descubre las mejores herramientas de IA para tu negocio</p>
+                <p>Construye software 99% más barato que métodos tradicionales</p>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <ChartBarIcon className="w-5 h-5 text-pink-400" />
-                <p>Automatiza tus procesos y aumenta tu productividad</p>
+                <p>Automatiza tareas repetitivas y enfócate en lo importante</p>
               </div>
             </div>
 
@@ -279,15 +279,30 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Webinar: IA para Empresas
+            Webinar: IA para Emprendedores
           </motion.h1>
+          
+          <motion.div
+            className="mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <p className="text-lg font-semibold text-red-300 mb-2">
+              🚨 Emprendedores en Latinoamérica se están quedando atrás de Estados Unidos en el uso de IA
+            </p>
+            <p className="text-sm text-gray-300">
+              Mientras empresarios estadounidenses automatizan sus negocios y reducen costos en 99%, muchos en LATAM siguen usando métodos tradicionales
+            </p>
+          </motion.div>
+
           <motion.p 
             className="text-xl md-text-2xl mb-8 text-gray-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Descubre cómo las empresas líderes en Estados Unidos están revolucionando sus negocios con IA
+            Descubre cómo empresarios líderes en Estados Unidos están revolucionando sus negocios con IA y cómo tú puedes hacer lo mismo
           </motion.p>
           <motion.button 
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
@@ -297,7 +312,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Registrarse Ahora
+            No Me Quiero Quedar Atrás
           </motion.button>
         </motion.div>
       </div>
@@ -308,18 +323,18 @@ function App() {
           {[
             {
               icon: <SparklesIcon className="w-12 h-12 text-blue-400" />,
-              title: "Creación de Contenido con IA",
-              description: "Aprende a generar contenido profesional, desde posts en redes sociales hasta blogs y newsletters, utilizando las mejores herramientas de IA"
+              title: "Obtén GRATIS lo que Otros Pagan Miles",
+              description: "Muchas soluciones de IA que ves anunciadas por miles de dólares, las puedes obtener GRATIS usando los modelos básicos de IA con los prompts correctos"
             },
             {
               icon: <RocketLaunchIcon className="w-12 h-12 text-purple-400" />,
-              title: "Tecnologías de IA",
-              description: "Descubre las herramientas más efectivas para tu negocio: ChatGPT, Midjourney, DALL-E, y otras plataformas de IA generativa"
+              title: "Software 99% Más Barato",
+              description: "La IA puede construir aplicaciones web y software 99% más barato que las rutas tradicionales. Nunca antes había sido tan económico crear soluciones personalizadas"
             },
             {
               icon: <ChartBarIcon className="w-12 h-12 text-pink-400" />,
-              title: "Automatización Inteligente",
-              description: "Implementa flujos de trabajo automatizados para marketing, atención al cliente y análisis de datos usando IA"
+              title: "Automatiza Tareas Repetitivas",
+              description: "Muchas tareas repetitivas que te quitan tiempo de hacer cosas importantes en tu negocio pueden ser fácilmente manejadas con IA"
             }
           ].map((benefit, index) => (
             <motion.div
@@ -342,6 +357,51 @@ function App() {
         </div>
       </div>
 
+      {/* Urgency Section */}
+      <div className="container mx-auto px-4 py-20 relative">
+        <motion.div 
+          className="max-w-4xl mx-auto text-center bg-gradient-to-r from-yellow-900/30 to-red-900/30 backdrop-blur-sm p-12 rounded-2xl border border-yellow-500/30"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2 
+            className="text-3xl md-text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            ⚠️ No Puedes Quedarte Atrás en IA
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-6 text-gray-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            La IA va a avanzar tan rápido que quedarse atrás hoy significa quedarse atrás para siempre. Según las tendencias económicas, <span className="font-bold text-yellow-300">la IA es lo #1 que debes aprender en 2025</span>.
+          </motion.p>
+          <motion.p 
+            className="text-lg mb-8 text-gray-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            Nunca antes había sido tan barato y alcanzable construir soluciones de software personalizadas para negocios que usan las mismas tecnologías que las empresas de Silicon Valley.
+          </motion.p>
+          <motion.button 
+            className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            Quiero Aprender IA Ahora
+          </motion.button>
+        </motion.div>
+      </div>
+
       {/* CTA Section */}
       <div className="container mx-auto px-4 py-20 relative">
         <motion.div 
@@ -356,7 +416,7 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Transforma tu Estrategia Digital con IA
+            Transforma tu Negocio con IA en 2025
           </motion.h2>
           <motion.p 
             className="text-xl mb-8 text-gray-300"
@@ -364,7 +424,7 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Aprende a crear contenido impactante, automatizar procesos y aprovechar las últimas tecnologías de IA para tu negocio
+            Aprende a crear soluciones profesionales, automatizar procesos y aprovechar las mismas tecnologías que usan los emprendedores más exitosos de Estados Unidos
           </motion.p>
           <motion.button 
             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
