@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { SparklesIcon, RocketLaunchIcon, ChartBarIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
+import { SparklesIcon, RocketLaunchIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import MailchimpModal from './MailchimpModal';
 
 const ParticleSystem = () => {
   const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; delay: number }[]>([]);
@@ -133,64 +134,6 @@ const LimitedSeatsBanner = () => {
   );
 };
 
-const RegistrationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <div className="absolute inset-0 bg-black-50 backdrop-blur-sm" onClick={onClose} />
-          <motion.div
-            className="relative bg-gray-900-95 backdrop-blur-md p-8 rounded-2xl border border-white-10 shadow-2xl max-w-lg w-full mx-4"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-          >
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-            >
-              <XMarkIcon className="w-6 h-6" />
-            </button>
-            
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-                ¡Últimos Cupos Disponibles!
-              </h3>
-              <p className="text-gray-300">
-                No dejes que tu negocio se quede atrás en la revolución de la IA
-              </p>
-            </div>
-
-            <div className="space-y-4 mb-6">
-              <div className="flex items-center gap-3 text-gray-300">
-                <SparklesIcon className="w-5 h-5 text-blue-400" />
-                <p>Obtén GRATIS lo que otros pagan miles de dólares</p>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <RocketLaunchIcon className="w-5 h-5 text-purple-400" />
-                <p>Más contactos, más ventas, más $$$</p>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
-                <ChartBarIcon className="w-5 h-5 text-pink-400" />
-                <p>Automatiza tareas repetitivas y enfócate en lo importante</p>
-              </div>
-            </div>
-
-            <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25">
-              Reservar mi Lugar Ahora
-            </button>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
-
 const DefaultLanding = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -202,6 +145,36 @@ const DefaultLanding = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const modalTheme = {
+    background: 'bg-gray-900/95',
+    borderColor: 'border-white/10',
+    titleColor: 'bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400',
+    subtitleColor: 'text-gray-300',
+    textColor: 'text-gray-300',
+    buttonGradient: 'bg-gradient-to-r from-blue-600 to-purple-600',
+    buttonHoverGradient: 'from-blue-700 to-purple-700',
+    successColor: 'text-green-400',
+    iconColors: {
+      close: 'text-gray-400',
+      success: 'text-green-400'
+    }
+  };
+
+  const modalFeatures = [
+    {
+      icon: <SparklesIcon className="w-5 h-5 text-blue-400" />,
+      text: 'Obtén GRATIS lo que otros pagan miles de dólares'
+    },
+    {
+      icon: <RocketLaunchIcon className="w-5 h-5 text-purple-400" />,
+      text: 'Más contactos, más ventas, más $$$'
+    },
+    {
+      icon: <ChartBarIcon className="w-5 h-5 text-pink-400" />,
+      text: 'Automatiza tareas repetitivas y enfócate en lo importante'
+    }
+  ];
+
   return (
     <main className="min-h-screen text-white overflow-hidden relative">
       {/* Profile Section */}
@@ -211,14 +184,14 @@ const DefaultLanding = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-purple-500-50 shadow-lg shadow-purple-500/25">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-purple-500/50 shadow-lg shadow-purple-500/25">
           <img
             src="/images/profile.jpeg"
             alt="Miguel Beas"
             className="object-cover w-full h-full"
           />
         </div>
-        <span className="text-sm font-medium bg-black-30 backdrop-blur-sm px-3 py-1 rounded-full border border-white-10">
+        <span className="text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
           Avalado por Miguel Beas
         </span>
       </motion.div>
@@ -230,7 +203,15 @@ const DefaultLanding = () => {
       <LimitedSeatsBanner />
 
       {/* Registration Modal */}
-      <RegistrationModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <MailchimpModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        title="¡Últimos Cupos Disponibles!"
+        subtitle="No dejes que tu negocio se quede atrás en la revolución de la IA"
+        buttonText="Reservar mi Lugar Ahora"
+        features={modalFeatures}
+        theme={modalTheme}
+      />
 
       {/* Animated background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
