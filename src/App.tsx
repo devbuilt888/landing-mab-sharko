@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Import themed components (to be created)
@@ -17,25 +17,23 @@ import PoliceLanding from './components/PoliceLanding';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<DefaultLanding />} />
-          <Route path="/military" element={<MilitaryLanding />} />
-          <Route path="/racecar" element={<RacecarLanding />} />
-          <Route path="/spaceship" element={<SpaceshipLanding />} />
-          <Route path="/midnight" element={<MidnightLanding />} />
-          <Route path="/aliens" element={<AliensLanding />} />
-          <Route path="/egypt" element={<EgyptLanding />} />
-          <Route path="/circus" element={<CircusLanding />} />
-          <Route path="/football" element={<FootballLanding />} />
-          <Route path="/newsroom" element={<NewsroomLanding />} />
-          <Route path="/police" element={<PoliceLanding />} />
-          {/* Additional routes will be added in future prompts:
-              /circus, /football, /newsroom, /police */}
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<DefaultLanding />} />
+        <Route path="/military" element={<MilitaryLanding />} />
+        <Route path="/racecar" element={<RacecarLanding />} />
+        <Route path="/spaceship" element={<SpaceshipLanding />} />
+        <Route path="/midnight" element={<MidnightLanding />} />
+        <Route path="/aliens" element={<AliensLanding />} />
+        <Route path="/egypt" element={<EgyptLanding />} />
+        <Route path="/circus" element={<CircusLanding />} />
+        <Route path="/football" element={<FootballLanding />} />
+        <Route path="/newsroom" element={<NewsroomLanding />} />
+        <Route path="/police" element={<PoliceLanding />} />
+        {/* Additional routes will be added in future prompts:
+            /circus, /football, /newsroom, /police */}
+      </Routes>
+    </div>
   );
 }
 
