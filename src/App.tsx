@@ -170,11 +170,11 @@ const RegistrationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-3 text-gray-300">
                 <SparklesIcon className="w-5 h-5 text-blue-400" />
-                <p>Obtén GRATIS lo que Otros Pagan Miles</p>
+                <p>Obtén GRATIS lo que otros pagan miles de dólares</p>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <RocketLaunchIcon className="w-5 h-5 text-purple-400" />
-                <p>Construye software 99% más barato que métodos tradicionales</p>
+                <p>Más contactos, más ventas, más $$$</p>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <ChartBarIcon className="w-5 h-5 text-pink-400" />
@@ -220,7 +220,7 @@ function App() {
           />
         </div>
         <span className="text-sm font-medium bg-black-30 backdrop-blur-sm px-3 py-1 rounded-full border border-white-10">
-          Presentado por Miguel Beas
+          Avalado por Miguel Beas
         </span>
       </motion.div>
 
@@ -281,6 +281,20 @@ function App() {
           >
             Webinar: IA para Emprendedores
           </motion.h1>
+          
+          <motion.div
+            className="mb-6 p-4 bg-green-900/20 border border-green-500/30 rounded-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+          >
+            <p className="text-lg font-semibold text-green-300 mb-2">
+              📹 Únete a un Zoom GRATUITO donde aprenderás en 30 mins
+            </p>
+            <p className="text-sm text-gray-300">
+              Cómo la IA en español ya puede hacer crecer tu negocio de manera automática
+            </p>
+          </motion.div>
           
           <motion.div
             className="mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-xl"
