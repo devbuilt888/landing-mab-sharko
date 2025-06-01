@@ -416,6 +416,99 @@ function App() {
         </motion.div>
       </div>
 
+      {/* Testimonials Section */}
+      <div className="container mx-auto px-4 py-20 relative">
+        <motion.div 
+          className="max-w-6xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2 
+            className="text-3xl md-text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            🚀 Resultados Reales de Nuestros Estudiantes
+          </motion.h2>
+          
+          <div className="grid md-grid-cols-2 gap-8">
+            {/* Testimonial 1 */}
+            <motion.div
+              className="bg-gray-800-50 backdrop-blur-sm p-8 rounded-2xl border border-green-500/30 shadow-lg shadow-green-500/10"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-green-400 to-blue-400 flex items-center justify-center text-2xl font-bold text-white">
+                  CM
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Carlos Mendoza</h3>
+                  <p className="text-green-400 text-sm">CEO, TechSolutions LATAM</p>
+                </div>
+              </div>
+              <div className="text-gray-300 leading-relaxed">
+                <p className="text-lg mb-4">
+                  🤯🤯🤯 NO PUEDEN CREER LO QUE PASÓ!!! 🚀💰
+                </p>
+                <p className="mb-4">
+                  Hermanos, estoy TEMBLANDO mientras escribo esto... 😱 Después del webinar de Miguel, implementé TODO lo que enseñó y MIREN ESTOS NÚMEROS: 📊
+                </p>
+                <p className="mb-4 text-green-300 font-bold">
+                  💵 AHORRÉ MÁS DE $120,000 DÓLARES AL MES en salarios!!! 💵
+                </p>
+                <p className="mb-4">
+                  La IA ahora hace TODO: 🤖 ✅ Desarrolla nuestro software ✅ Crea contenido para redes sociales ✅ Maneja tareas que antes requerían 8 empleados!!! 
+                </p>
+                <p className="text-yellow-300 font-semibold">
+                  Literalmente estoy llorando de la emoción... MI VIDA CAMBIÓ PARA SIEMPRE!!! 😭🙏✨
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Testimonial 2 */}
+            <motion.div
+              className="bg-gray-800-50 backdrop-blur-sm p-8 rounded-2xl border border-purple-500/30 shadow-lg shadow-purple-500/10"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              whileHover={{ y: -5 }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-2xl font-bold text-white">
+                  SR
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Sofia Rodriguez</h3>
+                  <p className="text-purple-400 text-sm">Estudiante de Marketing, UCLA</p>
+                </div>
+              </div>
+              <div className="text-gray-300 leading-relaxed">
+                <p className="text-lg mb-4">
+                  OMG CHICOS!!! 😍💎 TENGO QUE CONTARLES ESTO!!! 🔥
+                </p>
+                <p className="mb-4">
+                  Estoy escribiendo desde mi cuarto en el dormitorio universitario y NO PUEDO PARAR DE GRITAR!!! 🏫📢 Miguel me cambió la vida COMPLETAMENTE!!! 
+                </p>
+                <p className="mb-4 text-purple-300 font-bold">
+                  💰 $87,500 DÓLARES en 6 MESES!!! 💰 DESDE MI CUARTO!!! 
+                </p>
+                <p className="mb-4">
+                  Con el equipo de asistentes de IA que construimos, ofrezco servicios de marketing a empresas 🚀 ¡Los clientes PELEAN por trabajar conmigo! 💪✨
+                </p>
+                <p className="text-pink-300 font-semibold">
+                  Mis papás no entienden cómo gano más que ellos siendo estudiante!!! 😂👨‍👩‍👧 ¡GRACIAS MIGUEL! 🙏💕
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+
       {/* CTA Section */}
       <div className="container mx-auto px-4 py-20 relative">
         <motion.div 
