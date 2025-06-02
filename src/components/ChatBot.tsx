@@ -49,39 +49,39 @@ const ChatBot: React.FC = () => {
   ];
 
   const handleQuickPrompt = (prompt: string) => {
-    setInputMessage(prompt);
     setShowQuickButtons(false);
-    // Auto-send the message
-    setTimeout(() => {
-      const userMessage: Message = {
-        id: Date.now().toString(),
-        text: prompt,
-        isUser: true,
+    setInputMessage(''); // Clear any existing input
+    setIsLoading(true);
+    
+    // Add user message immediately
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      text: prompt,
+      isUser: true,
+      timestamp: new Date()
+    };
+    setMessages(prev => [...prev, userMessage]);
+    
+    // Send to API
+    sendMessageToAPI(prompt).then(response => {
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: response,
+        isUser: false,
         timestamp: new Date()
       };
-      setMessages(prev => [...prev, userMessage]);
-      setIsLoading(true);
-      
-      sendMessageToAPI(prompt).then(response => {
-        const botMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: response,
-          isUser: false,
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, botMessage]);
-        setIsLoading(false);
-      }).catch(() => {
-        const errorMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          text: 'Lo siento, hubo un error. Por favor, intenta de nuevo.',
-          isUser: false,
-          timestamp: new Date()
-        };
-        setMessages(prev => [...prev, errorMessage]);
-        setIsLoading(false);
-      });
-    }, 100);
+      setMessages(prev => [...prev, botMessage]);
+    }).catch(() => {
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: 'Lo siento, hubo un error. Por favor, intenta de nuevo.',
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    }).finally(() => {
+      setIsLoading(false);
+    });
   };
 
   // This connects to your Vercel API endpoint
@@ -300,7 +300,7 @@ const ChatBot: React.FC = () => {
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Escribe tu pregunta..."
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm text-gray-900 bg-white placeholder-gray-500"
                   disabled={isLoading}
                 />
                 <button
