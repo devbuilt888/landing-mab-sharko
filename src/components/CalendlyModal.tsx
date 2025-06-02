@@ -109,7 +109,7 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({
               <iframe
                 src="https://calendly.com/pmteamwinners/bb-global-solutions-ai-webinar?embed_domain=localhost&embed_type=Inline"
                 width="100%"
-                height="750"
+                height="850"
                 frameBorder="0"
                 scrolling="no"
                 title="Calendly Scheduling"
