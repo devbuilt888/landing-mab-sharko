@@ -21,6 +21,7 @@ const ChatBot: React.FC = () => {
   ]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showQuickButtons, setShowQuickButtons] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Debug: Log component mount
@@ -38,6 +39,50 @@ const ChatBot: React.FC = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Quick prompt buttons
+  const quickPrompts = [
+    'IA para Emprendedores',
+    '¿Cuándo es la reunión?',
+    '¿Cómo puede ayudarme la IA?',
+    'Obtener herramientas GRATIS'
+  ];
+
+  const handleQuickPrompt = (prompt: string) => {
+    setInputMessage(prompt);
+    setShowQuickButtons(false);
+    // Auto-send the message
+    setTimeout(() => {
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        text: prompt,
+        isUser: true,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, userMessage]);
+      setIsLoading(true);
+      
+      sendMessageToAPI(prompt).then(response => {
+        const botMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: response,
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, botMessage]);
+        setIsLoading(false);
+      }).catch(() => {
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: 'Lo siento, hubo un error. Por favor, intenta de nuevo.',
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, errorMessage]);
+        setIsLoading(false);
+      });
+    }, 100);
+  };
 
   // This connects to your Vercel API endpoint
   const sendMessageToAPI = async (message: string): Promise<string> => {
@@ -65,12 +110,25 @@ const ChatBot: React.FC = () => {
     } catch (error) {
       console.error('Error calling chat API:', error);
       
-      // Fallback responses for development/testing
+      // Enhanced fallback responses with website-specific content
+      const responses: { [key: string]: string } = {
+        'IA para Emprendedores': '¡Excelente! Este webinar está diseñado específicamente para emprendedores latinoamericanos. Miguel Beas te enseñará cómo implementar IA para automatizar tareas, reducir costos en 99%, y obtener GRATIS herramientas que otros pagan miles de dólares. Las fechas disponibles son: Jun 9 (3:00pm-3:30pm) y Jun 12 (8:00pm-8:30pm) hora del Este de EE.UU. y Canadá.',
+        '¿Cuándo es la reunión?': 'Las próximas sesiones del webinar gratuito son:\n\n📅 **Junio 9**: 3:00pm - 3:30pm\n📅 **Junio 12**: 8:00pm - 8:30pm\n\n🕐 Hora del Este de EE.UU. y Canadá\n\n¡Solo 30 minutos para transformar tu negocio con IA!',
+        '¿Cómo puede ayudarme la IA?': 'Según Miguel Beas, la IA puede revolucionar tu negocio de 3 formas principales:\n\n✅ **Más contactos, más ventas, más $$$** - Genera leads automáticamente\n✅ **Obtén GRATIS** herramientas que otros pagan miles\n✅ **Automatiza el 70%** de tareas repetitivas\n\nEn el webinar aprenderás las estrategias exactas que usan empresarios exitosos de Estados Unidos.',
+        'Obtener herramientas GRATIS': '🎯 ¡Esta es una de las mejores partes! Miguel te mostrará cómo obtener GRATIS herramientas de IA que normalmente cuestan miles de dólares. Aprenderás a usar modelos básicos con los prompts correctos para conseguir resultados profesionales sin pagar precios premium. ¡Regístrate al webinar gratuito para conocer estos secretos!'
+      };
+
+      // Check if the message matches a quick prompt
+      if (responses[message]) {
+        return responses[message];
+      }
+
+      // Default fallback responses
       const fallbackResponses = [
-        "¡Excelente pregunta! Miguel Beas enseña que la IA puede automatizar hasta el 70% de las tareas repetitivas en tu empresa. ¿Te interesa saber cómo empezar?",
-        "La implementación de IA puede reducir costos operativos en un 99% según nuestros casos de estudio. ¿Qué área de tu negocio te gustaría optimizar primero?",
-        "Miguel recomienda comenzar con chatbots y automatización de procesos. En el webinar aprenderás estrategias específicas para empresas latinoamericanas.",
-        "¿Sabías que puedes obtener GRATIS herramientas de IA que otros pagan miles de dólares? Te sugiero registrarte al webinar para conocer estos secretos.",
+        "¡Excelente pregunta! Miguel Beas enseña que la IA puede automatizar hasta el 70% de las tareas repetitivas en tu empresa. Las próximas sesiones son Jun 9 (3:00pm-3:30pm) y Jun 12 (8:00pm-8:30pm) hora del Este.",
+        "La implementación de IA puede reducir costos operativos en un 99% según nuestros casos de estudio. ¿Te gustaría unirte al webinar gratuito para aprender más?",
+        "Miguel recomienda comenzar con chatbots y automatización de procesos. En el webinar del 9 o 12 de junio aprenderás estrategias específicas para empresas latinoamericanas.",
+        "¿Sabías que puedes obtener GRATIS herramientas de IA que otros pagan miles de dólares? Te sugiero registrarte al webinar: Jun 9 (3-3:30pm) o Jun 12 (8-8:30pm) hora del Este.",
         "Los emprendedores que implementan IA ven resultados increíbles como más contactos, más ventas y más $$$. ¿Te gustaría unirte al webinar gratuito?"
       ];
       
@@ -92,6 +150,7 @@ const ChatBot: React.FC = () => {
     setMessages(prev => [...prev, userMessage]);
     setInputMessage('');
     setIsLoading(true);
+    setShowQuickButtons(false); // Hide quick buttons after first user message
 
     try {
       const response = await sendMessageToAPI(inputMessage);
@@ -126,22 +185,6 @@ const ChatBot: React.FC = () => {
 
   return (
     <div>
-      {/* Test visibility div */}
-      <div 
-        style={{
-          position: 'fixed',
-          bottom: '100px',
-          right: '20px',
-          background: 'red',
-          color: 'white',
-          padding: '10px',
-          borderRadius: '8px',
-          zIndex: 9999
-        }}
-      >
-        ChatBot Test - If you see this, the component is rendering!
-      </div>
-
       {/* Chat Toggle Button */}
       <motion.button
         className="fixed bottom-6 right-6 z-[9999] bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-2xl border-2 border-white/20 transition-all duration-300"
@@ -203,6 +246,31 @@ const ChatBot: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
+
+              {/* Quick prompt buttons - only show initially */}
+              {showQuickButtons && messages.length === 1 && (
+                <motion.div
+                  className="flex justify-start"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                >
+                  <div className="max-w-xs space-y-2">
+                    <p className="text-xs text-gray-500 mb-2">Preguntas frecuentes:</p>
+                    {quickPrompts.map((prompt, index) => (
+                      <motion.button
+                        key={index}
+                        onClick={() => handleQuickPrompt(prompt)}
+                        className="block w-full text-left px-3 py-2 text-xs bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg border border-blue-200 transition-colors"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {prompt}
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
               
               {isLoading && (
                 <motion.div

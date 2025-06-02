@@ -278,20 +278,6 @@ const DefaultLanding = () => {
               Cómo la IA en español ya puede hacer crecer tu negocio de manera automática
             </p>
           </motion.div>
-          
-          <motion.div
-            className="mb-6 p-4 bg-red-900/20 border border-red-500/30 rounded-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <p className="text-lg font-semibold text-red-300 mb-2">
-              🚨 Emprendedores en Latinoamérica se están quedando atrás de Estados Unidos en el uso de IA
-            </p>
-            <p className="text-sm text-gray-300">
-              Mientras empresarios estadounidenses automatizan sus negocios y reducen costos en 99%, muchos en LATAM siguen usando métodos tradicionales
-            </p>
-          </motion.div>
 
           <motion.p 
             className="text-xl md-text-2xl mb-8 text-gray-300"
@@ -301,6 +287,36 @@ const DefaultLanding = () => {
           >
             Descubre cómo empresarios líderes en Estados Unidos están revolucionando sus negocios con IA y cómo tú puedes hacer lo mismo
           </motion.p>
+
+          {/* Meeting Times Section - Moved here */}
+          <motion.div
+            className="mb-8 p-6 bg-blue-900/30 border border-blue-400/50 rounded-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <div className="text-center">
+              <p className="text-xl font-bold text-blue-300 mb-4">
+                🗓️ Próximas Sesiones Disponibles
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="bg-blue-800/30 p-4 rounded-lg border border-blue-400/30">
+                  <p className="text-lg font-semibold text-blue-200">📅 Junio 9</p>
+                  <p className="text-2xl font-bold text-white">3:00pm - 3:30pm</p>
+                  <p className="text-sm text-blue-300">Hora del Este (EE.UU. y Canadá)</p>
+                </div>
+                <div className="bg-blue-800/30 p-4 rounded-lg border border-blue-400/30">
+                  <p className="text-lg font-semibold text-blue-200">📅 Junio 12</p>
+                  <p className="text-2xl font-bold text-white">8:00pm - 8:30pm</p>
+                  <p className="text-sm text-blue-300">Hora del Este (EE.UU. y Canadá)</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-300 mt-3">
+                ⚡ Solo 30 minutos que pueden transformar tu negocio para siempre
+              </p>
+            </div>
+          </motion.div>
+
           <motion.button 
             onClick={openModal}
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
@@ -312,6 +328,21 @@ const DefaultLanding = () => {
           >
             No Me Quiero Quedar Atrás
           </motion.button>
+
+          {/* Urgency Section */}
+          <motion.div
+            className="mt-8 p-4 bg-red-900/20 border border-red-500/30 rounded-xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <p className="text-lg font-semibold text-red-300 mb-2 text-center">
+              🚨 Emprendedores en Latinoamérica se están quedando atrás de Estados Unidos en el uso de IA
+            </p>
+            <p className="text-sm text-gray-300 text-center">
+              Mientras empresarios estadounidenses automatizan sus negocios y reducen costos en 99%, muchos en LATAM siguen usando métodos tradicionales
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -353,52 +384,6 @@ const DefaultLanding = () => {
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* Urgency Section */}
-      <div className="container mx-auto px-4 py-20 relative">
-        <motion.div 
-          className="max-w-4xl mx-auto text-center bg-gradient-to-r from-yellow-900/30 to-red-900/30 backdrop-blur-sm p-12 rounded-2xl border border-yellow-500/30"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.h2 
-            className="text-3xl md-text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-400"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            ⚠️ No Puedes Quedarte Atrás en IA
-          </motion.h2>
-          <motion.p 
-            className="text-xl mb-6 text-gray-300"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            La IA va a avanzar tan rápido que quedarse atrás hoy significa quedarse atrás para siempre. Según las tendencias económicas, <span className="font-bold text-yellow-300">la IA es lo #1 que debes aprender en 2025</span>.
-          </motion.p>
-          <motion.p 
-            className="text-lg mb-8 text-gray-300"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            Nunca antes había sido tan barato y alcanzable construir soluciones de software personalizadas para negocios que usan las mismas tecnologías que las empresas de Silicon Valley.
-          </motion.p>
-          <motion.button 
-            onClick={openModal}
-            className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Quiero Aprender IA Ahora
-          </motion.button>
-        </motion.div>
       </div>
 
       {/* Testimonials Section */}
