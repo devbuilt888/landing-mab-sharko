@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { SparklesIcon, RocketLaunchIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import CalendlyModal from './CalendlyModal';
+import ChatBot from './ChatBot';
 
 const ParticleSystem = () => {
   const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; delay: number }[]>([]);
@@ -204,8 +205,8 @@ const DefaultLanding = () => {
       <CalendlyModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title="¡Últimos Cupos Disponibles!"
-        subtitle="Reserva tu lugar en el webinar GRATUITO de IA para emprendedores"
+        title="🎯 ¡Últimos Lugares Disponibles!"
+        subtitle="No dejes que tu empresa se quede atrás mientras otras transforman sus negocios con IA"
         features={modalFeatures}
         theme={modalTheme}
       />
@@ -525,6 +526,18 @@ const DefaultLanding = () => {
           </motion.button>
         </motion.div>
       </div>
+
+      {/* CalendlyModal and ChatBot */}
+      <CalendlyModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        title="🎯 ¡Últimos Lugares Disponibles!"
+        subtitle="No dejes que tu empresa se quede atrás mientras otras transforman sus negocios con IA"
+        features={modalFeatures}
+        theme={modalTheme}
+      />
+      
+      <ChatBot />
     </main>
   );
 };

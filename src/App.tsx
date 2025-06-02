@@ -14,6 +14,7 @@ import CircusLanding from './components/CircusLanding';
 import FootballLanding from './components/FootballLanding';
 import NewsroomLanding from './components/NewsroomLanding';
 import PoliceLanding from './components/PoliceLanding';
+import ZoomRedirect from './components/ZoomRedirect';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/football" element={<FootballLanding />} />
         <Route path="/newsroom" element={<NewsroomLanding />} />
         <Route path="/police" element={<PoliceLanding />} />
+        <Route path="/zoom" element={<ZoomRedirect />} />
         {/* Additional routes will be added in future prompts:
             /circus, /football, /newsroom, /police */}
       </Routes>
