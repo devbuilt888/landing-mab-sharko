@@ -22,11 +22,11 @@ const StarField = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {stars.map((star) => (
         <motion.div
           key={star.id}
-          className="star"
+          className="absolute"
           style={{
             left: `${star.x}%`,
             top: `${star.y}%`,
@@ -34,7 +34,6 @@ const StarField = () => {
             height: `${star.size}px`,
             backgroundColor: '#00d4ff',
             borderRadius: '50%',
-            position: 'absolute',
           }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
@@ -49,7 +48,7 @@ const StarField = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -73,11 +72,11 @@ const SpaceDebris = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {debris.map((piece) => (
         <motion.div
           key={piece.id}
-          className="space-debris"
+          className="absolute"
           style={{
             left: `${piece.x}%`,
             top: `${piece.y}%`,
@@ -101,7 +100,7 @@ const SpaceDebris = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 

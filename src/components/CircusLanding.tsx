@@ -23,11 +23,11 @@ const ConfettiParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {confetti.map((piece) => (
         <motion.div
           key={piece.id}
-          className="confetti-particle"
+          className="absolute"
           style={{
             left: `${piece.x}%`,
             top: `${piece.y}%`,
@@ -52,7 +52,7 @@ const ConfettiParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -77,11 +77,11 @@ const CircusTents = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {tents.map((tent) => (
         <motion.div
           key={tent.id}
-          className="circus-tent"
+          className="absolute"
           style={{
             left: `${tent.x}%`,
             top: `${tent.y}%`,
@@ -105,7 +105,7 @@ const CircusTents = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 

@@ -21,11 +21,11 @@ const PoliceBeacons = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {beacons.map((beacon) => (
         <motion.div
           key={beacon.id}
-          className="police-beacon"
+          className="absolute"
           style={{
             left: `${beacon.x}%`,
             top: `${beacon.y}%`,
@@ -49,7 +49,7 @@ const PoliceBeacons = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -73,11 +73,11 @@ const PatrolCars = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {cars.map((car) => (
         <motion.div
           key={car.id}
-          className="patrol-car"
+          className="absolute"
           style={{
             left: `${car.x}%`,
             top: `${car.y}%`,
@@ -99,7 +99,7 @@ const PatrolCars = () => {
           🚔
         </motion.div>
       ))}
-    </>
+    </div>
   );
 };
 

@@ -21,11 +21,11 @@ const FieldParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="field-particle"
+          className="absolute"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -48,7 +48,7 @@ const FieldParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -72,11 +72,11 @@ const FootballShapes = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {footballs.map((football) => (
         <motion.div
           key={football.id}
-          className="football-shape"
+          className="absolute"
           style={{
             left: `${football.x}%`,
             top: `${football.y}%`,
@@ -102,7 +102,7 @@ const FootballShapes = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 

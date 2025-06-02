@@ -320,8 +320,8 @@ const DefaultLanding = () => {
             },
             {
               icon: <RocketLaunchIcon className="w-12 h-12 text-purple-400" />,
-              title: "Software 99% Más Barato",
-              description: "La IA puede construir aplicaciones web y software 99% más barato que las rutas tradicionales. Nunca antes había sido tan económico crear soluciones personalizadas"
+              title: "Más Contactos, Más Ventas, Más $$$",
+              description: "La IA te ayuda a generar leads calificados automáticamente, cerrar más ventas con chatbots inteligentes y crear sistemas que trabajan 24/7 para hacer crecer tu negocio y aumentar tus ingresos"
             },
             {
               icon: <ChartBarIcon className="w-12 h-12 text-pink-400" />,

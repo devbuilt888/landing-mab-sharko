@@ -21,11 +21,11 @@ const MilitaryParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="military-particle"
+          className="absolute"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -48,7 +48,7 @@ const MilitaryParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -72,11 +72,11 @@ const TacticalShapes = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {shapes.map((shape) => (
         <motion.div
           key={shape.id}
-          className="tactical-shape"
+          className="absolute"
           style={{
             left: `${shape.x}%`,
             top: `${shape.y}%`,
@@ -98,7 +98,7 @@ const TacticalShapes = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
