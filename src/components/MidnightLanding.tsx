@@ -21,11 +21,11 @@ const MoonbeamParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="moonbeam-particle"
+          className="absolute"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -48,7 +48,7 @@ const MoonbeamParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -72,11 +72,11 @@ const FloatingMoons = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {moons.map((moon) => (
         <motion.div
           key={moon.id}
-          className="floating-moon"
+          className="absolute"
           style={{
             left: `${moon.x}%`,
             top: `${moon.y}%`,
@@ -100,7 +100,7 @@ const FloatingMoons = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 

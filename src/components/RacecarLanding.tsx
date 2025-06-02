@@ -21,11 +21,11 @@ const SpeedParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="speed-particle"
+          className="absolute"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -48,7 +48,7 @@ const SpeedParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -71,11 +71,11 @@ const RacingStripes = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {stripes.map((stripe) => (
         <motion.div
           key={stripe.id}
-          className="racing-stripe"
+          className="absolute"
           style={{
             left: `${stripe.x}%`,
             top: `${stripe.y}%`,
@@ -97,7 +97,7 @@ const RacingStripes = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 

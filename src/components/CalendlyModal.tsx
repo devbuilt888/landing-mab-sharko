@@ -106,15 +106,15 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({
 
             {/* Calendly Iframe */}
             <div className="relative bg-white rounded-lg overflow-hidden">
-              <iframe 
+              <iframe
                 src="https://calendly.com/pmteamwinners/bb-global-solutions-ai-webinar?embed_domain=localhost&embed_type=Inline"
                 width="100%"
-                height="700"
+                height="750"
                 frameBorder="0"
                 scrolling="no"
-                title="Calendario de Reservas"
-                style={{ border: 'none', borderRadius: '8px' }}
-              />
+                title="Calendly Scheduling"
+                className="rounded-lg"
+              ></iframe>
             </div>
           </motion.div>
         </motion.div>

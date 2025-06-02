@@ -21,11 +21,11 @@ const NewsTickerParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="news-particle"
+          className="absolute"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -49,7 +49,7 @@ const NewsTickerParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -74,11 +74,11 @@ const BroadcastElements = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {elements.map((element) => (
         <motion.div
           key={element.id}
-          className="broadcast-element"
+          className="absolute"
           style={{
             left: `${element.x}%`,
             top: `${element.y}%`,
@@ -100,7 +100,7 @@ const BroadcastElements = () => {
           {element.type}
         </motion.div>
       ))}
-    </>
+    </div>
   );
 };
 

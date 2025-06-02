@@ -21,11 +21,11 @@ const AlienParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="alien-particle"
+          className="absolute"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -48,7 +48,7 @@ const AlienParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -72,11 +72,11 @@ const UFOShapes = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {ufos.map((ufo) => (
         <motion.div
           key={ufo.id}
-          className="ufo-shape"
+          className="absolute"
           style={{
             left: `${ufo.x}%`,
             top: `${ufo.y}%`,
@@ -101,7 +101,7 @@ const UFOShapes = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 

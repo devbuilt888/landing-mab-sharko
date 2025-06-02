@@ -21,11 +21,11 @@ const SandParticles = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="sand-particle"
+          className="absolute"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -49,7 +49,7 @@ const SandParticles = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
@@ -73,11 +73,11 @@ const PyramidShapes = () => {
   }, []);
 
   return (
-    <>
+    <div className="fixed inset-0 pointer-events-none z-10">
       {pyramids.map((pyramid) => (
         <motion.div
           key={pyramid.id}
-          className="pyramid-shape"
+          className="absolute"
           style={{
             left: `${pyramid.x}%`,
             top: `${pyramid.y}%`,
@@ -102,7 +102,7 @@ const PyramidShapes = () => {
           }}
         />
       ))}
-    </>
+    </div>
   );
 };
 
