@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { SparklesIcon, RocketLaunchIcon, ChartBarIcon } from '@heroicons/react/24/outline';
-import MailchimpModal from './MailchimpModal';
+import CalendlyModal from './CalendlyModal';
 
 const ParticleSystem = () => {
   const [particles, setParticles] = useState<{ id: number; x: number; y: number; size: number; delay: number }[]>([]);
@@ -145,18 +145,16 @@ const DefaultLanding = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const openModal = () => setShowModal(true);
+
   const modalTheme = {
     background: 'bg-gray-900/95',
     borderColor: 'border-white/10',
     titleColor: 'bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400',
     subtitleColor: 'text-gray-300',
     textColor: 'text-gray-300',
-    buttonGradient: 'bg-gradient-to-r from-blue-600 to-purple-600',
-    buttonHoverGradient: 'from-blue-700 to-purple-700',
-    successColor: 'text-green-400',
     iconColors: {
-      close: 'text-gray-400',
-      success: 'text-green-400'
+      close: 'text-gray-400'
     }
   };
 
@@ -202,13 +200,12 @@ const DefaultLanding = () => {
       {/* Limited Seats Banner */}
       <LimitedSeatsBanner />
 
-      {/* Registration Modal */}
-      <MailchimpModal
+      {/* Calendly Modal */}
+      <CalendlyModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         title="¡Últimos Cupos Disponibles!"
-        subtitle="No dejes que tu negocio se quede atrás en la revolución de la IA"
-        buttonText="Reservar mi Lugar Ahora"
+        subtitle="Reserva tu lugar en el webinar GRATUITO de IA para emprendedores"
         features={modalFeatures}
         theme={modalTheme}
       />
@@ -299,6 +296,7 @@ const DefaultLanding = () => {
             Descubre cómo empresarios líderes en Estados Unidos están revolucionando sus negocios con IA y cómo tú puedes hacer lo mismo
           </motion.p>
           <motion.button 
+            onClick={openModal}
             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -384,6 +382,7 @@ const DefaultLanding = () => {
             Nunca antes había sido tan barato y alcanzable construir soluciones de software personalizadas para negocios que usan las mismas tecnologías que las empresas de Silicon Valley.
           </motion.p>
           <motion.button 
+            onClick={openModal}
             className="bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-700 hover:to-red-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-red-500/25"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -514,6 +513,7 @@ const DefaultLanding = () => {
             Aprende a crear soluciones profesionales, automatizar procesos y aprovechar las mismas tecnologías que usan los emprendedores más exitosos de Estados Unidos
           </motion.p>
           <motion.button 
+            onClick={openModal}
             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
