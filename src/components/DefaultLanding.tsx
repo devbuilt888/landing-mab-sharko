@@ -146,6 +146,11 @@ const DefaultLanding = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Debug: Check if ChatBot is being rendered
+  useEffect(() => {
+    console.log('DefaultLanding component rendering with ChatBot');
+  }, []);
+
   const openModal = () => setShowModal(true);
 
   const modalTheme = {

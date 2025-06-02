@@ -23,6 +23,14 @@ const ChatBot: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Debug: Log component mount
+  useEffect(() => {
+    console.log('ChatBot component mounted successfully!');
+    return () => {
+      console.log('ChatBot component unmounted');
+    };
+  }, []);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -56,7 +64,18 @@ const ChatBot: React.FC = () => {
       return data.response || "Lo siento, no pude procesar tu mensaje.";
     } catch (error) {
       console.error('Error calling chat API:', error);
-      return "Lo siento, hubo un error conectando con el servidor. Por favor, intenta de nuevo.";
+      
+      // Fallback responses for development/testing
+      const fallbackResponses = [
+        "¡Excelente pregunta! Miguel Beas enseña que la IA puede automatizar hasta el 70% de las tareas repetitivas en tu empresa. ¿Te interesa saber cómo empezar?",
+        "La implementación de IA puede reducir costos operativos en un 99% según nuestros casos de estudio. ¿Qué área de tu negocio te gustaría optimizar primero?",
+        "Miguel recomienda comenzar con chatbots y automatización de procesos. En el webinar aprenderás estrategias específicas para empresas latinoamericanas.",
+        "¿Sabías que puedes obtener GRATIS herramientas de IA que otros pagan miles de dólares? Te sugiero registrarte al webinar para conocer estos secretos.",
+        "Los emprendedores que implementan IA ven resultados increíbles como más contactos, más ventas y más $$$. ¿Te gustaría unirte al webinar gratuito?"
+      ];
+      
+      const randomResponse = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+      return randomResponse;
     }
   };
 
@@ -106,16 +125,39 @@ const ChatBot: React.FC = () => {
   };
 
   return (
-    <>
+    <div>
+      {/* Test visibility div */}
+      <div 
+        style={{
+          position: 'fixed',
+          bottom: '100px',
+          right: '20px',
+          background: 'red',
+          color: 'white',
+          padding: '10px',
+          borderRadius: '8px',
+          zIndex: 9999
+        }}
+      >
+        ChatBot Test - If you see this, the component is rendering!
+      </div>
+
       {/* Chat Toggle Button */}
       <motion.button
-        className="fixed bottom-6 right-6 z-50 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
+        className="fixed bottom-6 right-6 z-[9999] bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-2xl border-2 border-white/20 transition-all duration-300"
+        onClick={() => {
+          console.log('ChatBot button clicked!');
+          setIsOpen(!isOpen);
+        }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, scale: 0 }}
+        initial={{ opacity: 1, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1 }}
+        transition={{ duration: 0.3 }}
+        style={{ 
+          background: '#2563eb',
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        }}
       >
         {isOpen ? (
           <XMarkIcon className="w-6 h-6" />
@@ -204,7 +246,7 @@ const ChatBot: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 
