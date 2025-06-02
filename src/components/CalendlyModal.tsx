@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -31,6 +31,19 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({
   features,
   theme
 }) => {
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -42,8 +55,9 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({
         >
           <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" onClick={onClose} />
           <motion.div
-            className={`relative backdrop-blur-md p-6 rounded-xl border-2 shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto ${theme.background} ${theme.borderColor}`}
+            className={`relative backdrop-blur-md p-6 rounded-xl border-2 shadow-2xl w-full mx-4 h-[95vh] overflow-y-auto ${theme.background} ${theme.borderColor}`}
             style={{ 
+              maxWidth: '1000px',
               boxShadow: `0 0 50px ${theme.borderColor}40, inset 0 0 20px ${theme.borderColor}10`
             }}
             initial={{ scale: 0.9, opacity: 0 }}
@@ -95,11 +109,10 @@ const CalendlyModal: React.FC<CalendlyModalProps> = ({
               <iframe 
                 src="https://calendly.com/pmteamwinners/bb-global-solutions-ai-webinar?embed_domain=localhost&embed_type=Inline"
                 width="100%"
-                height="500"
+                height="700"
                 frameBorder="0"
                 scrolling="no"
                 title="Calendario de Reservas"
-                className="min-h-[400px] max-h-[500px]"
                 style={{ border: 'none', borderRadius: '8px' }}
               />
             </div>
