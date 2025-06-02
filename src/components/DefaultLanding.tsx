@@ -489,6 +489,9 @@ const DefaultLanding = () => {
         </motion.div>
       </div>
 
+      {/* ChatBot positioned after testimonials */}
+      <ChatBot />
+
       {/* CTA Section */}
       <div className="container mx-auto px-4 py-20 relative">
         <motion.div 
@@ -527,7 +530,7 @@ const DefaultLanding = () => {
         </motion.div>
       </div>
 
-      {/* CalendlyModal and ChatBot */}
+      {/* CalendlyModal */}
       <CalendlyModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
@@ -536,8 +539,6 @@ const DefaultLanding = () => {
         features={modalFeatures}
         theme={modalTheme}
       />
-      
-      <ChatBot />
     </main>
   );
 };
