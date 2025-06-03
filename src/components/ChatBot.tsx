@@ -214,7 +214,7 @@ const ChatBot: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 z-40 w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col"
+            className="fixed bottom-24 right-6 z-40 w-80 h-[500px] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col"
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -237,7 +237,7 @@ const ChatBot: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <div
-                    className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
+                    className={`max-w-xs px-3 py-2 rounded-lg text-sm whitespace-pre-wrap ${
                       message.isUser
                         ? 'bg-blue-600 text-white rounded-br-none'
                         : 'bg-gray-100 text-gray-800 rounded-bl-none'

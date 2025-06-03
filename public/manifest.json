@@ -3,8 +3,23 @@
   "name": "Miguel Beas - Webinar IA para Empresas",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "favicons/favicon-16x16.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicons/favicon-32x32.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicons/favicon-64x64.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicons/favicon-128x128.ico",
+      "sizes": "128x128",
       "type": "image/x-icon"
     },
     {

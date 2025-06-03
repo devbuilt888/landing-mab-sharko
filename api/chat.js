@@ -94,7 +94,7 @@ Responde en español, sé detallado cuando corresponda, y siempre busca ayudar a
             content: message
           }
         ],
-        max_tokens: 300,
+        max_tokens: 1500,
         temperature: 0.7,
       }),
     });
