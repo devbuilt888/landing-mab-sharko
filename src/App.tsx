@@ -15,8 +15,10 @@ import FootballLanding from './components/FootballLanding';
 import NewsroomLanding from './components/NewsroomLanding';
 import PoliceLanding from './components/PoliceLanding';
 import ZoomRedirect from './components/ZoomRedirect';
-import BBGlobalSolutionsLanding from './components/BBGlobalSolutionsLanding';
-import StarWarsHyperspace from './components/StarWarsHyperspace';
+// import BBGlobalSolutionsLanding from './components/BBGlobalSolutionsLanding';
+// import StarWarsHyperspace from './components/StarWarsHyperspace';
+import ChartsDashboard from './components/ChartsDashboard';
+import ConsultaEmprendedores from './components/ConsultaEmprendedores';
 
 function App() {
   return (
@@ -34,8 +36,10 @@ function App() {
         <Route path="/newsroom" element={<NewsroomLanding />} />
         <Route path="/police" element={<PoliceLanding />} />
         <Route path="/zoom" element={<ZoomRedirect />} />
-        <Route path="/bb-global" element={<BBGlobalSolutionsLanding />} />
-        <Route path="/hyperspace" element={<StarWarsHyperspace />} />
+        {/* <Route path="/bb-global" element={<BBGlobalSolutionsLanding />} /> */}
+        {/* <Route path="/hyperspace" element={<StarWarsHyperspace />} /> */}
+        <Route path="/charts" element={<ChartsDashboard />} />
+        <Route path="/consulta" element={<ConsultaEmprendedores />} />
         {/* Additional routes will be added in future prompts:
             /circus, /football, /newsroom, /police */}
       </Routes>
